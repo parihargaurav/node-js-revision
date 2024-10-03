@@ -1,15 +1,9 @@
+// Building HTTP server
+const http = require("http"); // build in package
 
-const math = require("./math");
-const fs = require("fs");
-const os = require("os");
+const myServer = http.createServer((req, res) => {
+  console.log("New Req Received");
+  res.end("Hello From Server");
+});
 
-console.log("Math value is", math.sub(2, 3));
-console.log("Math value is", math.add(2, 3));
-
-const result = fs.readFileSync("./contacts.txt", "utf-8");
-console.log(result);
-
-console.log(os.cpus().length); // 12 threads can be maximum size
-
-// blocking operations  Synchronous 
-// non blocking operations Asynchronous 
+myServer.listen(8000, () => console.log("Server Started!"));
